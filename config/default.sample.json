@@ -1,0 +1,6 @@
+{
+    "serverConfig": {
+        "checkCron": "every 1 minutes",
+        "scanConcurrency": 50
+    }
+}

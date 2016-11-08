@@ -33,6 +33,27 @@ router.get('/ip_array', function (req, res) {
     }));
 });
 
+router.get('/union_ip_array', function (req, res) {
+    res.send(JSON.stringify({
+        return_code: 1,
+        ip_array: singleServer.unionAvailableIps
+    }));
+});
+
+router.get('/checked_ip_array', function (req, res) {
+    res.send(JSON.stringify({
+        return_code: 1,
+        ip_array: singleServer.checkedMergedAvailableIps
+    }));
+});
+
+router.get('/checked_union_ip_array', function (req, res) {
+    res.send(JSON.stringify({
+        return_code: 1,
+        ip_array: singleServer.checkedUnionAvailableIps
+    }));
+});
+
 router.get('/full_ip_array', function (req, res) {
     res.send(JSON.stringify({
         return_code: 1,
