@@ -3,7 +3,7 @@ let router = express.Router();
 let singleServer = require('../single_server');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     res.render('index', { title: 'Express' });
 });
 
@@ -30,6 +30,13 @@ router.get('/ip_array', function (req, res) {
     res.send(JSON.stringify({
         return_code: 1,
         ip_array: singleServer.mergedAvailableIps
+    }));
+});
+
+router.get('/full_ip_array', function (req, res) {
+    res.send(JSON.stringify({
+        return_code: 1,
+        full_ip_array: singleServer.idAvailableIpTable
     }));
 });
 

@@ -41,7 +41,12 @@ class GoogleIdentifierServer {
                 tempMergedArray = _.intersection(tempMergedArray, singleArray);
             }
         });
-        this.mergedAvailableIps = tempMergedArray;
+        if (!_.isNull(tempMergedArray) && !_.isEmpty(tempMergedArray)) {
+            this.mergedAvailableIps = tempMergedArray;
+        }
+        else {
+            this.mergedAvailableIps = [];
+        }
     }    
 }
 
