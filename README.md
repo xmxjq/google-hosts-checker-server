@@ -1,2 +1,2 @@
 # google-hosts-checker-server
-google hosts C-S checker server side
+a C-S google hosts ip provider server-side
