@@ -70,6 +70,7 @@ class GoogleIdentifierServer {
                 let tempCheckedMergedAvailableIps = [];
                 let tempCheckedUnionAvailableIps = [];
 
+                console.log("Start to check all mergedAvailableIps");
                 // check merged available ips
                 yield Promise.map(
                     self.mergedAvailableIps,
@@ -86,6 +87,7 @@ class GoogleIdentifierServer {
                     }
                 );
 
+                console.log("Start to check all unionAvailableIps");
                 // check union available ips
                 yield Promise.map(
                     self.unionAvailableIps,
