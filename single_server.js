@@ -2,6 +2,8 @@ let GoogleIdentifierServer = require('./libs/google_identifier_server');
 let later = require('later');
 let config = require('config');
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 let singleServer = new GoogleIdentifierServer();
 
 let sched = {};

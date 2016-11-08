@@ -62,6 +62,7 @@ class GoogleIdentifierServer {
 
     checkAllAvailableIps() {
         if (!this.checkFlag) {
+            this.checkFlag = true;
             let identifier = new GoogleIdentifier();
             let self = this;
 
