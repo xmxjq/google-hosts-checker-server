@@ -19,7 +19,11 @@ class GoogleIdentifierServer {
     constructor() {
         this.mergedAvailableIps = [];
         this.unionAvailableIps = [];
+
         this.idAvailableIpTable = {};
+
+        this.ipWhitelist = config.get("defaultIpWhiteList");
+        this.ipBlacklist = config.get("defaultIpBlackList");
 
         this.checkedMergedAvailableIps = [];
         this.checkedUnionAvailableIps = [];
@@ -42,6 +46,7 @@ class GoogleIdentifierServer {
         let self = this;
         let tempMergedArray = null;
         let tempUnionArray = [];
+
         _.forEach(this.idAvailableIpTable, function (singleArray, id, table) {
             if (_.isNull(tempMergedArray)) {
                 tempMergedArray = singleArray;
@@ -51,6 +56,13 @@ class GoogleIdentifierServer {
             }
             tempUnionArray = _.union(tempUnionArray, singleArray);
         });
+
+        tempMergedArray = _.difference(tempMergedArray, this.ipBlacklist);
+        tempUnionArray = _.difference(tempUnionArray, this.ipBlacklist);
+
+        tempMergedArray = _.union(tempMergedArray, this.ipWhitelist);
+        tempUnionArray = _.difference(tempUnionArray, this.ipWhitelist);
+
         if (!_.isNull(tempMergedArray) && !_.isEmpty(tempMergedArray)) {
             this.mergedAvailableIps = tempMergedArray;
         }
@@ -108,6 +120,18 @@ class GoogleIdentifierServer {
                 self.checkedUnionAvailableIps = tempCheckedUnionAvailableIps;
                 self.checkFlag = false;
             });
+        }
+    }
+
+    updateWhiteList(whitelist) {
+        if (_.isArray(whitelist)) {
+            this.ipWhitelist = whitelist;
+        }
+    }
+
+    updateBlackList(blacklist) {
+        if (_.isArray(blacklist)) {
+            this.ipBlacklist = blacklist;
         }
     }
 }

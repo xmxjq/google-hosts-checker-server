@@ -9,5 +9,11 @@
         "outputCron": "every 1 minutes",
         "submitCron": "every 30 seconds",
         "scanConcurrency": 50
-    }
+    },
+    "defaultIpBlackList": [
+
+    ],
+    "defaultIpWhiteList": [
+
+    ]
 }

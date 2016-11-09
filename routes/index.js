@@ -26,6 +26,38 @@ router.post('/delete_ip_array', function (req, res) {
     }));
 });
 
+router.post('/update_ip_whitelist', function (req, res) {
+    let ipArray = req.body.ip_array;
+    singleServer.updateWhiteList(ipArray);
+    res.send(JSON.stringify({
+        return_code: 1,
+        ip_array: singleServer.ipWhitelist
+    }));
+});
+
+router.post('/update_ip_blacklist', function (req, res) {
+    let ipArray = req.body.ip_array;
+    singleServer.updateBlackList(ipArray);
+    res.send(JSON.stringify({
+        return_code: 1,
+        ip_array: singleServer.ipBlacklist
+    }));
+});
+
+router.get('/ip_blacklist', function (req, res) {
+    res.send(JSON.stringify({
+        return_code: 1,
+        ip_array: singleServer.ipBlacklist
+    }));
+});
+
+router.get('/ip_whitelist', function (req, res) {
+    res.send(JSON.stringify({
+        return_code: 1,
+        ip_array: singleServer.ipWhitelist
+    }));
+});
+
 router.get('/ip_array', function (req, res) {
     res.send(JSON.stringify({
         return_code: 1,
