@@ -61,7 +61,7 @@ class GoogleIdentifierServer {
         tempUnionArray = _.difference(tempUnionArray, this.ipBlacklist);
 
         tempMergedArray = _.union(tempMergedArray, this.ipWhitelist);
-        tempUnionArray = _.difference(tempUnionArray, this.ipWhitelist);
+        tempUnionArray = _.union(tempUnionArray, this.ipWhitelist);
 
         if (!_.isNull(tempMergedArray) && !_.isEmpty(tempMergedArray)) {
             this.mergedAvailableIps = tempMergedArray;
